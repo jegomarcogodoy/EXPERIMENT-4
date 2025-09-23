@@ -1,37 +1,120 @@
-EXPERIMENT-4 | JEGO MARCO E. GODOY | 2ECE-A
+# EXPERIMENT-4 | JEGO MARCO E. GODOY | 2ECE-A  
 
-****************** Experiment Overview 🔍 ******************
+---
 
-The use of data visualization and data wrangling is the main topic of Experiment 4. The purpose of this experiment is to recognize and use various codes and functions when developing a Python application with Data Wrangling and Visualization modules.
+## ****************** Experiment Overview 🔍 ******************
+
+The use of data visualization and data wrangling is the main topic of Experiment 4.  
+The purpose of this experiment is to recognize and use various codes and functions when developing a Python application with Data Wrangling and Visualization modules.  
 
 This experiment comprises only 1 problem:
 
-(1) ECE BOARD EXAM PROBLEM - where I used the file "board2.csv" and uploaded its data into a data frame using pandas, and performed Data Wrangling and Visualization techniques.
+1. **ECE BOARD EXAM PROBLEM**  
+   - I used the file **"board2.csv"** and uploaded its data into a dataframe using pandas.  
+   - Performed **Data Wrangling** and **Visualization** techniques.  
 
-********************* Coding Process ✏️ *********************
+---
 
-For Number 1,
+## ********************* Coding Process ✏️ *********************
 
--- > First, I uploaded the data of the "board2.csv" file into the data frame "df"
+### Problem 1  
 
--- > I then created 2 data frames with different parameters for each data frame:
+➡️ **Step 1:** Upload the data of the `board2.csv` file into the dataframe `df`.  
 
--- > (a.) For the first data frame, named "Instru", the constants were the track as "Instrumentation" and hometown as "Luzon", and the variables displayed were the "Name", "GEAS", and "Electronics"
+```python
+import pandas as pd
+df = pd.read_csv('board2.csv')
+df
+```
 
--- > (b.) For the second data frame, named "Mindy", the constants were the gender as "Female" and hometown as "Mindanao," and the variables displayed were the "Name", "Track", "Electronics", and "Average"
+➡️ Step 2: Create two dataframes with different parameters:
 
-For the average, I computed the Average of the grades from all subjects
+(a.) DataFrame: Instru
 
-For Problem 2,
+Constants:
 
--- > Utilizing the data frame "board2" from Problem 1, I generated a bar graph showing the relation of the features to the average obtained by the students.
+  Track = "Instrumentation"
+
+  Hometown = "Luzon"
+
+Displayed Variables: Name, GEAS, Electronics
+
+```# For 1a
+constant_H = 'Luzon'
+constant_T = 'Instrumentation'
+
+Instru = df.loc[(df['Electronics'] > 70) 
+                & (df['Track'] == constant_T) 
+                & (df['Hometown'] == constant_H),
+                ['Name', 'GEAS', 'Electronics']]
+Instru
+```
+
+(b.) DataFrame: Mindy
+
+Constants:
+
+Gender = "Female"
+
+Hometown = "Mindanao"
+
+Displayed Variables: Name, Track, Electronics, Average
+
+```# For 1b
+const_H = 'Mindanao'
+const_G = 'Female'
+
+# Create the "Average" column
+df['Average'] = df[['Electronics', 'GEAS', 'Math', 'Communication']].mean(axis=1)
+
+# Filter DataFrame
+Mindy = df.loc[(df['Average'] >= 55) 
+               & (df['Hometown'] == const_H) 
+               & (df['Gender'] == const_G),
+               ['Name', 'Track', 'Electronics']]
+Mindy
+```
+
+Problem 2
+
+➡️ Using the dataframe df from Problem 1, I generated a bar graph showing the relation of the features to the average obtained by the students.
+
+```import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 3, figsize=(20, 4), sharey=True)
+
+# For Gender
+axes[0].bar(df['Gender'], df['Average'], color='pink')
+axes[0].set_title('Average by Gender')
+axes[0].set_xlabel('Gender')
+axes[0].set_ylabel('Average')
+
+# For Track
+axes[1].bar(df['Track'], df['Average'], color='purple')
+axes[1].set_title('Average by Track')
+axes[1].set_xlabel('Track')
+
+# For Hometown
+axes[2].bar(df['Hometown'], df['Average'], color='teal')
+axes[2].set_title('Average by Hometown')
+axes[2].set_xlabel('Hometown')
+
+plt.show()
+```
 
 ********************* Conclusion 🤓 *********************
 
-Following this experiment, I discovered how to:
+From the generated results, the bar graphs demonstrate:
 
-(a.) to determine the various codes and features required for data cleaning and visualization
+Gender: Female students achieved higher averages.
 
-(b.)to implement and utilize the many functions and codes when developing a Python software for data visualization and wrangling.
+Track: Students who selected Microelectronics had a higher average.
+
+Hometown: Luzon residents had a higher average.
+
+Therefore, track, gender, and hometown all contribute to better average scores.
 
 ********************* End 🏁 *********************
+
+End of Experiment 4
+Thank you! 🙌
