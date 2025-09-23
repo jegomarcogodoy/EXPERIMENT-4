@@ -27,6 +27,14 @@ df = pd.read_csv('board2.csv')
 df
 ```
 
+Explanation:
+
+-import pandas as pd → loads the Pandas library.
+
+-pd.read_csv('board2.csv') → reads the CSV file into a DataFrame (table-like structure).
+
+-df → displays the dataset.
+
 ➡️ Step 2: Create two dataframes with different parameters:
 
 (a.) DataFrame: Instru
@@ -49,6 +57,22 @@ Instru = df.loc[(df['Electronics'] > 70)
                 ['Name', 'GEAS', 'Electronics']]
 Instru
 ```
+
+Explanation:
+
+-constant_H and constant_T store the fixed values Luzon and Instrumentation.
+
+-df.loc[condition, columns] → selects rows that match the condition and only shows chosen columns.
+
+-(df['Electronics'] > 70) → students with Electronics > 70.
+
+-(df['Track'] == constant_T) → students in Instrumentation track.
+
+-(df['Hometown'] == constant_H) → students from Luzon.
+
+-['Name', 'GEAS', 'Electronics'] → only show these 3 columns.
+
+-Result → A filtered DataFrame showing Luzon Instrumentation students with Electronics > 70.
 
 (b.) DataFrame: Mindy
 
@@ -74,6 +98,22 @@ Mindy = df.loc[(df['Average'] >= 55)
                ['Name', 'Track', 'Electronics']]
 Mindy
 ```
+
+Explanation:
+
+-df[['Electronics', 'GEAS', 'Math', 'Communication']].mean(axis=1) → computes the average score per student.
+
+-df['Average'] = ... → adds a new column Average.
+
+-(df['Average'] >= 55) → only students with average ≥ 55.
+
+-(df['Hometown'] == const_H) → only students from Mindanao.
+
+-(df['Gender'] == const_G) → only female students.
+
+-['Name', 'Track', 'Electronics', 'Average'] → only show these columns.
+
+-Result → A DataFrame showing female Mindanao students with an average ≥ 55.
 
 Problem 2
 
@@ -101,6 +141,34 @@ axes[2].set_xlabel('Hometown')
 
 plt.show()
 ```
+
+Explanation:
+
+-import matplotlib.pyplot as plt → imports Matplotlib for plotting.
+
+-plt.subplots(1, 3, figsize=(20, 4), sharey=True) → creates a figure with 3 charts side by side, all sharing the same y-axis.
+
+-axes[0].bar(...) → creates a bar graph.
+
+-df['Gender'] → x-axis (Male/Female).
+
+-df['Average'] → y-axis (average scores).
+
+-Titles and labels make the chart clear.
+
+-df['Track'] → x-axis (different tracks like Microelectronics, Instrumentation).
+
+-df['Average'] → y-axis.
+
+-Purple color used for the bars.
+
+-df['Hometown'] → x-axis (Luzon, Visayas, Mindanao).
+
+-df['Average'] → y-axis.
+
+-Teal color used for the bars.
+
+-plt.show() → displays all 3 charts together.
 
 ********************* Conclusion 🤓 *********************
 
