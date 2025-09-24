@@ -116,7 +116,7 @@ Explanation:
 -Result → A DataFrame showing female Mindanao students with an average ≥ 55.
 
 Problem 2
-
+-
 ➡️ Using the dataframe df from Problem 1, I generated a bar graph showing the relation of the features to the average obtained by the students.
 
 ```import matplotlib.pyplot as plt
@@ -171,7 +171,7 @@ Explanation:
 -plt.show() → displays all 3 charts together.
 
 ********************* Conclusion 🤓 *********************
-
+-
 From the generated results, the bar graphs demonstrate:
 
 Gender: Female students achieved higher averages.
@@ -183,6 +183,8 @@ Hometown: Luzon residents had a higher average.
 Therefore, track, gender, and hometown all contribute to better average scores.
 
 ********************* End 🏁 *********************
-
+-
 End of Experiment 4
+-
 Thank you! 🙌
+-
